@@ -1,0 +1,9 @@
+node_modules
+jspm_packages
+.serverless
+.esbuild
+.dynamodb
+coverage
+swagger
+yarn-error.log
+.env
