@@ -50,7 +50,10 @@ describe('AuthService', () => {
           },
         })
 
-      const response = await authService.signup('email@email.com', '123pass')
+      const response = await authService.signup({
+        email: 'email@email.com',
+        password: '123pass',
+      })
       expect(response).toBe(true)
     })
   })
@@ -69,8 +72,43 @@ describe('AuthService', () => {
           promise: async () => await Promise.resolve(mockLoginResponse),
         })
 
-      const response = await authService.login('email@email.com', '123pass')
+      const response = await authService.login({
+        email: 'email@email.com',
+        password: '123pass',
+      })
       expect(response.token).toBe('123')
+    })
+  })
+
+  describe('test method forgotPassword', () => {
+    it('should be success', async () => {
+      jest
+        .spyOn(cognotoIdentityServiceProvider, 'forgotPassword')
+        .mockReturnValue({
+          promise: async () => await Promise.resolve(true),
+        })
+
+      const response = await authService.forgotPassword({
+        email: 'email@email.com',
+      })
+      expect(response).toBe(true)
+    })
+  })
+
+  describe('test method changePassword', () => {
+    it('should be success', async () => {
+      jest
+        .spyOn(cognotoIdentityServiceProvider, 'confirmForgotPassword')
+        .mockReturnValue({
+          promise: async () => await Promise.resolve(true),
+        })
+
+      const response = await authService.changePassword({
+        confirmationCode: '123',
+        email: 'email@email.com',
+        password: '123pass',
+      })
+      expect(response).toBe(true)
     })
   })
 })

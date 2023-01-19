@@ -40,3 +40,43 @@ export const authSignup = {
     },
   ],
 }
+
+export const forgotPassword = {
+  handler: `${handlerPath(__dirname)}/handler.forgotPassword`,
+  events: [
+    {
+      http: {
+        method: 'post',
+        path: 'auth/forgot-password',
+        cors: true,
+        swaggerTags: ['Auth'],
+        bodyType: 'ForgotPasswordDTO',
+        responseData: {
+          204: {
+            description: 'this went well, no response body',
+          },
+        },
+      },
+    },
+  ],
+}
+
+export const changePassword = {
+  handler: `${handlerPath(__dirname)}/handler.changePassword`,
+  events: [
+    {
+      http: {
+        method: 'post',
+        path: 'auth/change-password',
+        cors: true,
+        swaggerTags: ['Auth'],
+        bodyType: 'CofirmPasswordDTO',
+        responseData: {
+          204: {
+            description: 'this went well, no response body',
+          },
+        },
+      },
+    },
+  ],
+}
