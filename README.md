@@ -13,7 +13,7 @@ Application built using the following stack:
 
 Written in TypeScript using Serverless Framework with the Middy lib.
 
-## Instruções de instalação/implantação
+## Installation/Deployment Instructions
 
 set the environment variables:
 
@@ -42,9 +42,11 @@ Depending on your preferred package manager, follow the instructions below to de
 ## The available routes are:
 
 - Public Routes
+
   - `POST /signup`to register a new user
   - `POST /login` to generate an authentication token
-- Private Routes
+  - `POST /forgot-password` to send verification code
+  - `POST /change-password` to change password with the verification code
 
   > :warning: :warning: To access protected routes, a valid token must be sent in the header with authorization but not necessary in local environment
 
@@ -72,11 +74,11 @@ To create a tool, the following content must be sent in the request body:
 
 ### Locally
 
-Localmente, execute o seguinte comando:
+Locally, run the following command:
 
 - `yarn offline `
 
-Verifique a docuemntação do swagger na rota `GET /docs` para obter mais informações.
+Check the swagger documentation in the `GET /docs` route for more information.
 
 ### Remotely
 
